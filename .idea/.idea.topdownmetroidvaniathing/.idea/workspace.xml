@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbb9da77-5195-4876-9621-9bfda25fd2d8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/bulletScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/lockRotationChildScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../branklin bruh moment/Assets/cameraShake.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/shootingEnemyScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/healthScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/cameraShake.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/hiveShockwaveScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../abyss-game/Assets/waterScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/shipScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/helicarrierHiveScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/spriteShadowsRealtime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../branklin bruh moment/Assets/lineRendererShadows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/lineRendererShadows.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../branklin bruh moment/Assets/shadowManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/shadowManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/commonEnemyBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/kamikazeEnemyScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/laserDroneScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/laserScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/spiderScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/dashingBossScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/laserDroneManager.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/shadowManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/spriteShadowsRealtime.cs" />
+        <option value="$PROJECT_DIR$/Assets/lineRendererShadows.cs" />
+        <option value="$PROJECT_DIR$/Assets/spiderScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/FastIK/Scripts/FastIK/FastIKFabric.cs" />
+        <option value="$PROJECT_DIR$/Assets/lockRotationChildScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/cameraShake.cs" />
+        <option value="$PROJECT_DIR$/Assets/shootingEnemyScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/bulletScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/ConditionalFieldAttribute.cs" />
+        <option value="$PROJECT_DIR$/Assets/hiveShockwaveScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/dashingBossScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/kamikazeEnemyScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/shipScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/helicarrierHiveScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/gameManagerScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/healthScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/laserScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/commonEnemyBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/laserDroneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/laserDroneScript.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gv4x8TqNfjvYCztItU8oK6W2rb" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbb9da77-5195-4876-9621-9bfda25fd2d8" name="Default Changelist" comment="" />
+      <created>1598981975884</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598981975884</updated>
+      <workItem from="1598981980843" duration="20501000" />
+      <workItem from="1600109423188" duration="51652000" />
+      <workItem from="1600922695225" duration="1277000" />
+      <workItem from="1601141436865" duration="49088000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="WindowStateProjectService">
+    <state x="616" y="250" key="run.anything.popup" timestamp="1601335900075">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1601335900075" />
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1601503064615">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1601503064615" />
+  </component>
+</project>
