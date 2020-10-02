@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\vedpa\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\vedpa\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_hoveroff.-223727837.00" t="ExcludeRecursive" />
+    <e p="C:\Users\vedpa\OneDrive\Desktop\UnityProjects\hoveroff\hoveroff" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="AdvancedPolygonCollider" t="Include">
+          <e p="Readme.txt" t="Include" />
+          <e p="Script" t="Include">
+            <e p="AdvancedPolygonCollider.cs" t="Include" />
+            <e p="AdvancedPolygonColliderUtilities.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="AdvancedPolygonColliderEditor.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="bulletBossScript.cs" t="Include" />
+        <e p="bulletScript.cs" t="Include" />
+        <e p="cameraShake.cs" t="Include" />
+        <e p="commonEnemyBehaviour.cs" t="Include" />
+        <e p="dashingBossScript.cs" t="Include" />
+        <e p="FastIK" t="Include">
+          <e p="Documentation.txt" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="FastIK" t="Include">
+              <e p="FastIKCCD.cs" t="Include" />
+              <e p="FastIKFabric.cs" t="Include" />
+              <e p="FastIKLook.cs" t="Include" />
+            </e>
+            <e p="Sample" t="Include">
+              <e p="SampleProcedualAnimation.cs" t="Include" />
+              <e p="SampleRotator.cs" t="Include" />
+              <e p="SampleSinMover.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="GameManager.cs" t="Include" />
+        <e p="healthScript.cs" t="Include" />
+        <e p="helicarrierHiveScript.cs" t="Include" />
+        <e p="hiveShockwaveScript.cs" t="Include" />
+        <e p="kamikazeEnemyScript.cs" t="Include" />
+        <e p="laserDroneManager.cs" t="Include" />
+        <e p="laserDroneScript.cs" t="Include" />
+        <e p="laserScript.cs" t="Include" />
+        <e p="lineRendererShadows.cs" t="Include" />
+        <e p="lockRotationChildScript.cs" t="Include" />
+        <e p="shadowManager.cs" t="Include" />
+        <e p="shipScript.cs" t="Include" />
+        <e p="shootingEnemyScript.cs" t="Include" />
+        <e p="spiderScript.cs" t="Include" />
+        <e p="spriteShadowsRealtime.cs" t="Include" />
+      </e>
+      <e p="hoveroff.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
