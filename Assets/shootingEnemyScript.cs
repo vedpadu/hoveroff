@@ -40,6 +40,7 @@ public class shootingEnemyScript : MonoBehaviour
         hS = GetComponent<healthScript>();
         camerShake = Camera.main.GetComponent<cameraShake>();
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

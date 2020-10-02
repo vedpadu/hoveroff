@@ -53,7 +53,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 100663
   maxReflections: 1
-  maxLaserDist: 18.77778
+  maxLaserDist: 20
   currentLaserDist: 0
   laserDistChangeValue: 1000000
 --- !u!120 &2797374120569011651

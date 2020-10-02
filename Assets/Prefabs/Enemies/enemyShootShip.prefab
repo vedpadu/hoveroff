@@ -254,12 +254,18 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  hS: {fileID: 0}
   deathShakeDur: 0.4
   deathShakeMag: 0.2
   avoidanceLerp: 1
   hitEnemyDamage: 50
   hitPlayerDamage: 100
   hitDamageToPlayer: 75
+  healthScriptOnObject: 1
+  avoidanceLerpStartAfterTime: 0
+  healthGiveBackAmount: 0.2
+  hitPlayerShakeMag: 0
+  hitPlayerShakeDur: 0
 --- !u!114 &-1178279548567030594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +322,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   deathShakeDur: 0
   deathShakeMag: 0
+  destroyThisObject: 1
+  gameObjectToDestroy: {fileID: 0}
+  shakeFadeAfterDeath: 0
 --- !u!1 &8297098139665336608
 GameObject:
   m_ObjectHideFlags: 0

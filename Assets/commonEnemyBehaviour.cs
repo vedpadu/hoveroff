@@ -41,6 +41,10 @@ public class commonEnemyBehaviour : MonoBehaviour
 
     [Range(0f,1f)]
     public float healthGiveBackAmount = 1f / 5f;
+
+    public float hitPlayerShakeMag;
+
+    public float hitPlayerShakeDur;
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +113,7 @@ public class commonEnemyBehaviour : MonoBehaviour
             {
                 hS.DecreaseHealth(hitPlayerDamage);
                 hit = true;
+                other.gameObject.GetComponent<shipScript>().ShakeCam2(hitPlayerShakeDur, hitPlayerShakeMag);
                 other.gameObject.GetComponent<healthScript>().DecreaseHealth(hitDamageToPlayer);
             }else if (other.gameObject.CompareTag("Enemy"))
             {
