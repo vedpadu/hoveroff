@@ -47,6 +47,7 @@
         <e p="laserScript.cs" t="Include" />
         <e p="lineRendererShadows.cs" t="Include" />
         <e p="lockRotationChildScript.cs" t="Include" />
+        <e p="meshLayerSet.cs" t="Include" />
         <e p="shadowManager.cs" t="Include" />
         <e p="shipScript.cs" t="Include" />
         <e p="shootingEnemyScript.cs" t="Include" />
