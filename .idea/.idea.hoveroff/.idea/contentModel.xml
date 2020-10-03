@@ -38,6 +38,7 @@
           </e>
         </e>
         <e p="GameManager.cs" t="Include" />
+        <e p="handScript.cs" t="Include" />
         <e p="healthScript.cs" t="Include" />
         <e p="helicarrierHiveScript.cs" t="Include" />
         <e p="hiveShockwaveScript.cs" t="Include" />
