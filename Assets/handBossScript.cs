@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class handBossScript : MonoBehaviour
 {
@@ -12,10 +14,19 @@ public class handBossScript : MonoBehaviour
 
     private List<handScript> rightHands = new List<handScript>();
     private List<handScript> leftHands = new List<handScript>();
-    
+
+    public Transform spriteHolder;
+
+    public Transform sprite;
+
+    private Rigidbody2D spriteHolderRB;
+
+    public float stage1SpriteHolderLerp;
+    public float stage1SpriteHolderMoveForce;
     // Start is called before the first frame update
     void Start()
     {
+        spriteHolderRB = spriteHolder.GetComponent<Rigidbody2D>();
         for (var i = 0; i < rightHandTransform.childCount; i++)
         {
             rightHands.Add(rightHandTransform.GetChild(i).GetComponent<handScript>());
@@ -64,6 +75,25 @@ public class handBossScript : MonoBehaviour
                 rightHands[i].Punch();
             }
         }
+        CalculateAngleSpriteHolder();
+        DoMovementSpriteHolder();
+    }
+
+    private void LateUpdate()
+    {
+        sprite.rotation = Quaternion.identity;
+    }
+
+    private void CalculateAngleSpriteHolder()
+    {
+        Vector2 dir = (Vector2.zero - (Vector2)spriteHolder.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        spriteHolder.rotation = Quaternion.Euler(0f,0f,Mathf.LerpAngle(spriteHolder.rotation.eulerAngles.z, angle, stage1SpriteHolderLerp * Time.deltaTime));
+    }
+
+    void DoMovementSpriteHolder()
+    {
+        spriteHolderRB.AddRelativeForce(new Vector2(stage1SpriteHolderMoveForce * Time.deltaTime, 0f));
     }
 
     void CreateFormation(Formation formation)

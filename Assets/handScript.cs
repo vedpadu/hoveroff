@@ -44,6 +44,8 @@ public class handScript : MonoBehaviour
 
     [HideInInspector]
     public bool goToTarget;
+
+    public ParticleSystem engines;
     // Start is called before the first frame update
     void Start()
     {
@@ -141,14 +143,21 @@ public class handScript : MonoBehaviour
 
         float elapsed = 0.0f;
         bool shakeStarted = false;
+        bool partsStarted = false;
         while (elapsed < duration)
         {
             float lerpVal = punchCurveLocal.Evaluate(elapsed / duration);
             transform.position = CustomVector2Lerp(startPos, targetPos, lerpVal);
+            if (elapsed / duration > 0.6f && !partsStarted)
+            {
+                engines.Play();
+                partsStarted = true;
+            }
             if (!shakeStarted && elapsed/duration > punchShakeStart)
             {
                 camerShake.shakes.Add(new Shake(punchEndShakeDur, punchEndShakeMag));
                 shakeStarted = true;
+                engines.Stop();
             }
             elapsed += Time.deltaTime;
             yield return null;
