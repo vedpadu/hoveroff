@@ -10,6 +10,9 @@ public class handScript : MonoBehaviour
 
     public float punchTimePerUnit;
 
+    public float timeBeforePunchColorFade;
+    public float timeStunnedPunch;
+
     private bool init;
 
     public float punchEndShakeMag;
@@ -30,16 +33,28 @@ public class handScript : MonoBehaviour
     public float moveToPunchStartTimePerUnit;
 
     private bool readyToPunch;
+
+    private Color colorNotPunch;
+
+    private SpriteRenderer sR;
+    public float notPunchScale;
+    float scaleVal;
+    private Material srMat;
     // Start is called before the first frame update
     void Start()
     {
+        sR = GetComponent<SpriteRenderer>();
+        srMat = sR.material;
+        colorNotPunch = GetComponent<SpriteRenderer>().color;
         cam = Camera.main;
         camerShake = cam.GetComponent<cameraShake>();
+        scaleVal = notPunchScale;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.localScale = new Vector3(scaleVal, scaleVal, 1f);
         if (!init)
         {
             StartCoroutine(GoToPunchStart());
@@ -51,7 +66,7 @@ public class handScript : MonoBehaviour
             print(readyToPunch);
             float dist = ((Vector2)target.GetChild(0).position - (Vector2)transform.position).magnitude;
             float time = punchTimePerUnit * Mathf.Abs(dist);
-            StartCoroutine(Punch(time, target.GetChild(0).position, punchCurve, transform.position));
+            StartCoroutine(Punch(time, target.GetChild(0).position, punchCurve, transform.position, timeBeforePunchColorFade, timeStunnedPunch));
             readyToPunch = false;
         }
     }
@@ -100,9 +115,20 @@ public class handScript : MonoBehaviour
         readyToPunch = true;
     }
 
-    IEnumerator Punch(float duration, Vector2 targetPos, AnimationCurve punchCurveLocal, Vector2 startPos)
+    IEnumerator Punch(float duration, Vector2 targetPos, AnimationCurve punchCurveLocal, Vector2 startPos, float colorFadeTime, float timeStunned)
     {
-        yield return new WaitForSeconds(0.6f);
+        GetComponent<PolygonCollider2D>().enabled = true;
+        float elapsed1 = 0.0f;
+        while (elapsed1 < colorFadeTime)
+        {
+            srMat.SetFloat("_Alpha", 1 - (elapsed1/colorFadeTime));
+            sR.color = Color.Lerp(colorNotPunch, Color.white, 1 - (elapsed1 / colorFadeTime));
+            elapsed1 += Time.deltaTime;
+            yield return null;
+        }
+
+        
+
         float elapsed = 0.0f;
         bool shakeStarted = false;
         while (elapsed < duration)
@@ -117,6 +143,19 @@ public class handScript : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        yield return new WaitForSeconds(timeStunnedPunch);
+
+        elapsed1 = 0.0f;
+        while (elapsed1 < colorFadeTime)
+        {
+            srMat.SetFloat("_Alpha", elapsed1/colorFadeTime);
+            sR.color = Color.Lerp(Color.white, colorNotPunch, elapsed1 / colorFadeTime);
+            elapsed1 += Time.deltaTime;
+            yield return null;
+        }
+        
+        GetComponent<PolygonCollider2D>().enabled = false;
 
     }
 

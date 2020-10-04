@@ -26,6 +26,7 @@ public class laserScript : MonoBehaviour
     private lineRendererShadows shadows;
 
     private healthScript shipHealth;
+    
     // Start is called before the first frame update
     void Start()
     {
