@@ -32,7 +32,8 @@ public class handScript : MonoBehaviour
     public AnimationCurve moveToPunchStartCurve;
     public float moveToPunchStartTimePerUnit;
 
-    private bool readyToPunch;
+    [HideInInspector]
+    public bool readyToPunch;
 
     private Color colorNotPunch;
 
@@ -40,6 +41,9 @@ public class handScript : MonoBehaviour
     public float notPunchScale;
     float scaleVal;
     private Material srMat;
+
+    [HideInInspector]
+    public bool goToTarget;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,21 +58,27 @@ public class handScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localScale = new Vector3(scaleVal, scaleVal, 1f);
-        if (!init)
+        if (goToTarget)
         {
             StartCoroutine(GoToPunchStart());
-            init = true;
+            goToTarget = false;
         }
 
-        if (readyToPunch)
+        /*if (readyToPunch)
         {
-            print(readyToPunch);
             float dist = ((Vector2)target.GetChild(0).position - (Vector2)transform.position).magnitude;
             float time = punchTimePerUnit * Mathf.Abs(dist);
             StartCoroutine(Punch(time, target.GetChild(0).position, punchCurve, transform.position, timeBeforePunchColorFade, timeStunnedPunch));
             readyToPunch = false;
-        }
+        }*/
+    }
+
+    public void Punch()
+    {
+        float dist = ((Vector2)target.GetChild(0).position - (Vector2)transform.position).magnitude;
+        float time = punchTimePerUnit * Mathf.Abs(dist);
+        StartCoroutine(Punch(time, target.GetChild(0).position, punchCurve, transform.position, timeBeforePunchColorFade, timeStunnedPunch));
+        readyToPunch = false;
     }
 
     IEnumerator GoToPunchStart()
