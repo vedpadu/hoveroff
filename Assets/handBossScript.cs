@@ -23,9 +23,19 @@ public class handBossScript : MonoBehaviour
 
     public float stage1SpriteHolderLerp;
     public float stage1SpriteHolderMoveForce;
+
+    public bool bossFightStarted;
+    public handScript originalHand;
+    public handScript originalHand2;
+
+    private SpriteRenderer spriteSr;
+
+    private float spriteSROpacity;
+    float opacitySpriteIncreaseTimer;
     // Start is called before the first frame update
     void Start()
     {
+        spriteSr = sprite.GetComponent<SpriteRenderer>();
         spriteHolderRB = spriteHolder.GetComponent<Rigidbody2D>();
         for (var i = 0; i < rightHandTransform.childCount; i++)
         {
@@ -42,41 +52,143 @@ public class handBossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (originalHand.Equals(null) && originalHand2.Equals(null) && !bossFightStarted)
+        {
+            bossFightStarted = true;
+            for (var i = 0; i < rightHands.Count; i++)
+            {
+                if (!rightHands[i].Equals(null))
+                {
+                     rightHands[i].lockDown = false;
+                }
+               
+            }
+            for (var i = 0; i < leftHands.Count; i++)
+            {
+                if (!leftHands[i].Equals(null))
+                {
+                    leftHands[i].lockDown = false;
+                }
+               
+            }
+            CreateFormation(formations[Random.Range(0, formations.Count)]);
+        }
         bool canPunch = true;
         for (var i = 0; i < rightHands.Count; i++)
         {
-            if (!rightHands[i].readyToPunch)
+            if (!rightHands[i].Equals(null))
             {
-                canPunch = false;
-                break;
-            }
-        }
-
-        if (canPunch)
-        {
-            for (var i = 0; i < leftHands.Count; i++)
-            {
-                if (!leftHands[i].readyToPunch)
+                if (rightHands[i].isActiveAndEnabled && !rightHands[i].lockDown)
                 {
-                    canPunch = false;
-                    break;
+                    if (!rightHands[i].readyToPunch)
+                    {
+                        canPunch = false;
+                        break;
+                    }
                 }
             }
+            
+            
         }
 
         if (canPunch)
         {
             for (var i = 0; i < leftHands.Count; i++)
             {
-                leftHands[i].Punch();
+                if (!leftHands[i].Equals(null))
+                {
+                    if (leftHands[i].isActiveAndEnabled && !leftHands[i].lockDown)
+                    {
+                        if (!leftHands[i].readyToPunch)
+                        {
+                            canPunch = false;
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+        bool canMove = true;
+        for (var i = 0; i < rightHands.Count; i++)
+        {
+            if (!rightHands[i].Equals(null))
+            {
+                if (rightHands[i].isActiveAndEnabled && !rightHands[i].lockDown)
+                {
+                    if (!rightHands[i].punched)
+                    {
+                        canMove = false;
+                        break;
+                    }
+                }
+            }
+          
+
+        }
+
+        if (canMove)
+        {
+            for (var i = 0; i < leftHands.Count; i++)
+            {
+                if (!leftHands[i].Equals(null))
+                {
+                    if (leftHands[i].isActiveAndEnabled && !leftHands[i].lockDown)
+                    {
+                        if (!leftHands[i].punched)
+                        {
+                            canMove = false;
+                            break;
+                        }
+                    }
+                }
+                
+               
+            }
+        }
+
+        if (canMove)
+        {
+            CreateFormation(formations[Random.Range(0, formations.Count)]);
+        }
+
+        if (canPunch)
+        {
+            for (var i = 0; i < leftHands.Count; i++)
+            {
+                if (!leftHands[i].Equals(null))
+                {
+                    if (leftHands[i].isActiveAndEnabled)
+                    {
+                        leftHands[i].Punch();
+                    }
+                    
+                }
+                
             }
             for (var i = 0; i < rightHands.Count; i++)
             {
-                rightHands[i].Punch();
+                if (!rightHands[i].Equals(null))
+                {
+                    if (rightHands[i].isActiveAndEnabled)
+                    {
+                        rightHands[i].Punch();
+                    }
+                }
+                
             }
         }
-        CalculateAngleSpriteHolder();
-        DoMovementSpriteHolder();
+
+        if (bossFightStarted)
+        {
+            opacitySpriteIncreaseTimer += Time.deltaTime;
+            spriteSROpacity = Mathf.Lerp(0f, 1f, opacitySpriteIncreaseTimer);
+            spriteSr.color = new Color(spriteSr.color.r, spriteSr.color.g, spriteSr.color.g, spriteSROpacity);
+        }
+            CalculateAngleSpriteHolder();
+                DoMovementSpriteHolder();
+
+
     }
 
     private void LateUpdate()
@@ -104,11 +216,44 @@ public class handBossScript : MonoBehaviour
         List<Transform> leftHandTargetsToGive = new List<Transform>();
         for (var i = 0; i < rightHands.Count; i++)
         {
-            rightHandsToGiveTarget.Add(rightHands[i]);
+            if (!rightHands[i].Equals(null))
+            {
+                if (bossFightStarted)
+                {
+                    rightHandsToGiveTarget.Add(rightHands[i]);
+                }
+                else
+                {
+                    if (!rightHands[i].lockDown)
+                    {
+                        rightHandsToGiveTarget.Add(rightHands[i]);
+                    }
+                }
+                
+            }
+            
+           
         }
         for (var i = 0; i < leftHands.Count; i++)
         {
-            leftHandsToGiveTarget.Add(leftHands[i]);
+            if (!leftHands[i].Equals(null))
+            {
+                if (bossFightStarted)
+                {
+                     leftHandsToGiveTarget.Add(leftHands[i]);
+                }else
+                {
+                    if (!leftHands[i].lockDown)
+                    {
+                        leftHandsToGiveTarget.Add(leftHands[i]);
+                    }
+                }
+
+               
+            }
+            
+            
+            
         }
         for (var i = 0; i < formation.rightHands.Count; i++)
         {
@@ -126,6 +271,7 @@ public class handBossScript : MonoBehaviour
             rightHandTargetsToGive.Remove(target);
             rightHandsToGiveTarget[i].target = target;
             rightHandsToGiveTarget[i].goToTarget = true;
+            rightHandsToGiveTarget[i].punched = false;
             rightHandsToGiveTarget.Remove(rightHandsToGiveTarget[i]);
         }
         for (var i = leftHandsToGiveTarget.Count - 1; i >= 0; i--)
@@ -135,6 +281,7 @@ public class handBossScript : MonoBehaviour
             leftHandTargetsToGive.Remove(target);
             leftHandsToGiveTarget[i].target = target;
             leftHandsToGiveTarget[i].goToTarget = true;
+            leftHandsToGiveTarget[i].punched = false;
             leftHandsToGiveTarget.Remove(leftHandsToGiveTarget[i]);
         }
     }

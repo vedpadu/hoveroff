@@ -46,6 +46,15 @@ public class handScript : MonoBehaviour
     public bool goToTarget;
 
     public ParticleSystem engines;
+
+    [HideInInspector]
+    public bool punched;
+
+    public bool lockDown;
+
+    public bool isLeftHand;
+
+    public float timeBeforePunch = 0.6f;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +71,13 @@ public class handScript : MonoBehaviour
     {
         if (goToTarget)
         {
-            StartCoroutine(GoToPunchStart());
-            goToTarget = false;
+            if (!lockDown)
+            {
+                StartCoroutine(GoToPunchStart());
+                goToTarget = false;
+            }
+
+           
         }
 
         /*if (readyToPunch)
@@ -77,10 +91,14 @@ public class handScript : MonoBehaviour
 
     public void Punch()
     {
-        float dist = ((Vector2)target.GetChild(0).position - (Vector2)transform.position).magnitude;
-        float time = punchTimePerUnit * Mathf.Abs(dist);
-        StartCoroutine(Punch(time, target.GetChild(0).position, punchCurve, transform.position, timeBeforePunchColorFade, timeStunnedPunch));
-        readyToPunch = false;
+        if (!lockDown)
+        {
+            float dist = ((Vector2)target.GetChild(0).position - (Vector2)transform.position).magnitude;
+            float time = punchTimePerUnit * Mathf.Abs(dist);
+            StartCoroutine(Punch(time, target.GetChild(0).position, punchCurve, transform.position, timeBeforePunchColorFade, timeStunnedPunch, timeBeforePunch));
+            readyToPunch = false;
+        }
+       
     }
 
     IEnumerator GoToPunchStart()
@@ -89,6 +107,10 @@ public class handScript : MonoBehaviour
         float dist = dir.magnitude;
         dir = dir.normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (isLeftHand)
+        {
+            angle += 180f;
+        }
         float startAngle = transform.rotation.eulerAngles.z;
         float delta = Mathf.DeltaAngle(startAngle, angle);
         float timeToTurnToTarget = Mathf.Abs(delta) * (timePerRotation / 360f);
@@ -127,38 +149,52 @@ public class handScript : MonoBehaviour
         readyToPunch = true;
     }
 
-    IEnumerator Punch(float duration, Vector2 targetPos, AnimationCurve punchCurveLocal, Vector2 startPos, float colorFadeTime, float timeStunned)
+    IEnumerator Punch(float duration, Vector2 targetPos, AnimationCurve punchCurveLocal, Vector2 startPos, float colorFadeTime, float timeStunned, float timeBeforeStart)
     {
-        GetComponent<PolygonCollider2D>().enabled = true;
+        yield return new WaitForSeconds(timeBeforeStart);
+       
         float elapsed1 = 0.0f;
         while (elapsed1 < colorFadeTime)
         {
-            srMat.SetFloat("_Alpha", 1 - (elapsed1/colorFadeTime));
-            sR.color = Color.Lerp(colorNotPunch, Color.white, 1 - (elapsed1 / colorFadeTime));
+            if (!this.Equals(null))
+            {
+                srMat.SetFloat("_Alpha", 1 - (elapsed1/colorFadeTime));
+                sR.color = Color.Lerp(colorNotPunch, Color.white, 1 - (elapsed1 / colorFadeTime));
+            }
             elapsed1 += Time.deltaTime;
             yield return null;
         }
-
+        GetComponent<PolygonCollider2D>().enabled = true;
         
 
         float elapsed = 0.0f;
         bool shakeStarted = false;
         bool partsStarted = false;
+        bool partsEnded = false;
         while (elapsed < duration)
         {
-            float lerpVal = punchCurveLocal.Evaluate(elapsed / duration);
-            transform.position = CustomVector2Lerp(startPos, targetPos, lerpVal);
-            if (elapsed / duration > 0.6f && !partsStarted)
-            {
-                engines.Play();
-                partsStarted = true;
+            if(!this.Equals(null)){
+                float lerpVal = punchCurveLocal.Evaluate(elapsed / duration);
+                transform.position = CustomVector2Lerp(startPos, targetPos, lerpVal);
+                if (elapsed / duration > 0.6f && !partsStarted)
+                {
+                    engines.Play();
+                    partsStarted = true;
+                }
+                if (!shakeStarted && elapsed/duration > punchShakeStart)
+                {
+                    camerShake.shakes.Add(new Shake(punchEndShakeDur, punchEndShakeMag));
+                    shakeStarted = true;
+                    
+                }
+
+                if (!partsEnded && elapsed / duration > 0.9f)
+                {
+                    engines.Stop();
+                    partsEnded = true;
+                }
             }
-            if (!shakeStarted && elapsed/duration > punchShakeStart)
-            {
-                camerShake.shakes.Add(new Shake(punchEndShakeDur, punchEndShakeMag));
-                shakeStarted = true;
-                engines.Stop();
-            }
+            
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -168,13 +204,22 @@ public class handScript : MonoBehaviour
         elapsed1 = 0.0f;
         while (elapsed1 < colorFadeTime)
         {
-            srMat.SetFloat("_Alpha", elapsed1/colorFadeTime);
-            sR.color = Color.Lerp(Color.white, colorNotPunch, elapsed1 / colorFadeTime);
+            if (!this.Equals(null))
+            {
+                srMat.SetFloat("_Alpha", elapsed1/colorFadeTime);
+                sR.color = Color.Lerp(Color.white, colorNotPunch, elapsed1 / colorFadeTime);
+            }
+            
             elapsed1 += Time.deltaTime;
             yield return null;
         }
-        
-        GetComponent<PolygonCollider2D>().enabled = false;
+
+        if (!this.Equals(null))
+        {
+             GetComponent<PolygonCollider2D>().enabled = false;
+        }
+       
+        punched = true;
 
     }
 

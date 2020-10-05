@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8657484671396950861}
   - component: {fileID: 8657484671396950860}
   - component: {fileID: 8657484671396951219}
+  - component: {fileID: -4344869591090734058}
   m_Layer: 11
   m_Name: rightHand1
   m_TagString: Enemy
@@ -494,12 +495,33 @@ MonoBehaviour:
   avoidanceLerp: 0
   hitEnemyDamage: 100
   hitPlayerDamage: 100
-  hitDamageToPlayer: 75
+  hitDamageToPlayer: 200
   healthScriptOnObject: 1
   avoidanceLerpStartAfterTime: 0
   healthGiveBackAmount: 0.2
-  hitPlayerShakeMag: 0.3
-  hitPlayerShakeDur: 0.2
+  hitPlayerShakeMag: 0.45
+  hitPlayerShakeDur: 0.6
+--- !u!50 &-4344869591090734058
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657484671396951218}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &7642796960438742771
 PrefabInstance:
   m_ObjectHideFlags: 0
