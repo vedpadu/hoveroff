@@ -52,7 +52,7 @@ public class handBossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (originalHand.Equals(null) && originalHand2.Equals(null) && !bossFightStarted)
+        if (!bossFightStarted)
         {
             bossFightStarted = true;
             for (var i = 0; i < rightHands.Count; i++)
