@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: forceFieldHand
+  m_Name: forceFieldBoss
   m_Shader: {fileID: -6465566751694194690, guid: 8e1c0de7a5e242d419d0ff1a10a9aece,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -25,16 +25,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: fcf0d3066b7b54a4eb5ef3fbd82b1a0b, type: 3}
+        m_Texture: {fileID: 2800000, guid: af0330cb437c67745b216d81d7914bfc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_4C39DD9B: 1
     - Vector1_801C771C: 0.5
     - Vector1_9FF5019C: 0.05
-    - Vector1_B6AFEF42: 0.02083333
+    - Vector1_B6AFEF42: 0.010416667
     - _Alpha: 1
     m_Colors:
-    - Color_884F2612: {r: 0.4941176, g: 1.380392, b: 1.419608, a: 1}
+    - Color_884F2612: {r: 0.28810537, g: 0.9725271, b: 1.0012842, a: 1}
     - Color_F016745B: {r: 0.5960785, g: 1.756863, b: 1.811765, a: 0.254902}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0}

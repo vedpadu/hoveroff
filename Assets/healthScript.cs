@@ -30,6 +30,8 @@ public class healthScript : MonoBehaviour
     public GameObject gameObjectToDestroy;
 
     public bool shakeFadeAfterDeath;
+
+    public bool actuallyKill = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,33 +43,43 @@ public class healthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0f)
-        {
-            Destroy(GameObject.Instantiate(deathEffect, transform.position, transform.rotation), 3f);
-            if (shakeFadeAfterDeath)
+       
+            if (health <= 0f)
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<shipScript>().StopShakeCamOverTime(deathShakeDur, deathShakeMag);
-            }
-            else
-            {
-                camerShake.shakes.Add(new Shake(deathShakeDur, deathShakeMag));
-            }
+                if (actuallyKill)
+                {
+                    Destroy(GameObject.Instantiate(deathEffect, transform.position, transform.rotation), 3f);
+                    if (shakeFadeAfterDeath)
+                    {
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<shipScript>().StopShakeCamOverTime(deathShakeDur, deathShakeMag);
+                    }
+                    else
+                    {
+                        camerShake.shakes.Add(new Shake(deathShakeDur, deathShakeMag));
+                    }
             
             
-            if (destroyThisObject)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Destroy(gameObjectToDestroy);
-            }
+                    if (destroyThisObject)
+                    {
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObjectToDestroy);
+                    }
+                }
+                else
+                {
+                    health = 0f;
+                }
+                
            
-        }else if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
-        HealthBarTransform.transform.localScale = new Vector3(Mathf.Clamp(health/maxHealth,0f, 1f), 1f,1f);
+            }else if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+
+            HealthBarTransform.transform.localScale = new Vector3(Mathf.Clamp(health/maxHealth,0f, 1f), 1f,1f);
 
         if (timeSinceDamaged <= barAnimationTime)
         {

@@ -55,9 +55,20 @@ public class handScript : MonoBehaviour
     public bool isLeftHand;
 
     public float timeBeforePunch = 0.6f;
+
+    [HideInInspector]
+    public healthScript hS;
+
+    [HideInInspector]
+    public bool disabled = false;
+
+    public GameObject disabledParticles;
+
+    public Color disabledCol;
     // Start is called before the first frame update
     void Start()
     {
+        hS = GetComponent<healthScript>();
         sR = GetComponent<SpriteRenderer>();
         srMat = sR.material;
         colorNotPunch = GetComponent<SpriteRenderer>().color;
@@ -80,6 +91,13 @@ public class handScript : MonoBehaviour
            
         }
 
+        if (!disabled && hS.health <= 0f)
+        {
+            disabled = true;
+            sR.material.SetColor("_Color", disabledCol);
+            Destroy(GameObject.Instantiate(disabledParticles, transform.position, transform.rotation), 2f);
+            camerShake.shakes.Add(new Shake(0.6f, 0.45f));
+        }
         /*if (readyToPunch)
         {
             float dist = ((Vector2)target.GetChild(0).position - (Vector2)transform.position).magnitude;

@@ -54,6 +54,7 @@
         <e p="shipScript.cs" t="Include" />
         <e p="shootingEnemyScript.cs" t="Include" />
         <e p="spiderScript.cs" t="Include" />
+        <e p="splitBulletScript.cs" t="Include" />
         <e p="spriteShadowsRealtime.cs" t="Include" />
       </e>
       <e p="hoveroff.sln" t="IncludeFlat" />

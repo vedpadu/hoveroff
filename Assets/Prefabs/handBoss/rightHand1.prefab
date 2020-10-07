@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: fcf0d3066b7b54a4eb5ef3fbd82b1a0b, type: 3}
-  m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,11 +145,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   target: {fileID: 0}
-  punchTimePerUnit: 0.06
-  timeBeforePunchColorFade: 1
-  timeStunnedPunch: 1
-  punchEndShakeMag: 0.1
-  punchEndShakeDur: 0.2
+  punchTimePerUnit: 0.05
+  timeBeforePunchColorFade: 0.4
+  timeStunnedPunch: 0.6
+  punchEndShakeMag: 0.2
+  punchEndShakeDur: 0.3
   punchShakeStart: 0.819
   rotateToTargetCurve:
     serializedVersion: 2
@@ -200,11 +200,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  moveToPunchStartTimePerUnit: 0.1
+  moveToPunchStartTimePerUnit: 0.06
   readyToPunch: 0
   notPunchScale: 1
   goToTarget: 0
   engines: {fileID: 5560691930627808343}
+  punched: 0
+  lockDown: 0
+  isLeftHand: 0
+  timeBeforePunch: 0.5
+  hS: {fileID: 0}
+  disabled: 0
+  disabledParticles: {fileID: 8707307778291013391, guid: 14e9f6433ed4b58408b5dfdce3234725,
+    type: 3}
+  disabledCol: {r: 1, g: 0.111182414, b: 0, a: 1}
 --- !u!96 &8657484671396950863
 TrailRenderer:
   serializedVersion: 2
@@ -403,9 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1664c3ee54070a944b44229e4ca1108e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 8707307778291013391, guid: 14e9f6433ed4b58408b5dfdce3234725,
+    type: 3}
   health: 0
-  maxHealth: 500
+  maxHealth: 250
   HealthBarTransform: {fileID: 1191384570048951074}
   HealthBarRenderers:
   - {fileID: 475739163098719354}
@@ -449,6 +459,7 @@ MonoBehaviour:
   destroyThisObject: 1
   gameObjectToDestroy: {fileID: 0}
   shakeFadeAfterDeath: 0
+  actuallyKill: 0
 --- !u!114 &8657484671396951219
 MonoBehaviour:
   m_ObjectHideFlags: 0
