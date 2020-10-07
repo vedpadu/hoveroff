@@ -415,7 +415,7 @@ MonoBehaviour:
   deathEffect: {fileID: 8707307778291013391, guid: 14e9f6433ed4b58408b5dfdce3234725,
     type: 3}
   health: 0
-  maxHealth: 200
+  maxHealth: 150
   HealthBarTransform: {fileID: 1191384570048951074}
   HealthBarRenderers:
   - {fileID: 475739163098719354}

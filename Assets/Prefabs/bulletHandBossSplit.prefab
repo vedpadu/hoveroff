@@ -272,6 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletToSplitTo: {fileID: 4349667817355070530, guid: 0e7b68f8d4a2eab4483d70be9ce3a56f,
     type: 3}
-  splitCount: 6
+  splitCount: 4
   splitTime: 1
   bulletForce: 300

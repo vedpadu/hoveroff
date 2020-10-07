@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580e8c241ebbaf84f8c94c7bce1aaed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 22
+  damage: 25
   deathParts: {fileID: 8795040292936487560, guid: 450e40584f975cb42b84cc0c438280c8,
     type: 3}
   shakeDur: 0.1

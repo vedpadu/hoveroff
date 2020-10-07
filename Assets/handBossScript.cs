@@ -66,6 +66,8 @@ public class handBossScript : MonoBehaviour
     public float spriteMatAlphaChangeRate;
 
     private cameraShake camerShake;
+
+    private int attack;
     // Start is called before the first frame update
     void Start()
     {
@@ -425,7 +427,11 @@ public class handBossScript : MonoBehaviour
             timeBetweenAttacksTimer += Time.deltaTime;
             if (timeBetweenAttacksTimer >= timeBetweenAttacks)
             {
-                int attack = Random.Range(0, 2);
+                attack += 1;
+                if (attack > 0)
+                {
+                    attack = 0;
+                }
                 isAttacking = true;
                 timeBetweenAttacksTimer = 0f;
                 if (attack == 0)
