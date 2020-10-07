@@ -146,7 +146,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   target: {fileID: 0}
   punchTimePerUnit: 0.05
-  timeBeforePunchColorFade: 0.4
+  timeBeforePunchColorFade: 0.5
   timeStunnedPunch: 0.6
   punchEndShakeMag: 0.2
   punchEndShakeDur: 0.3
@@ -345,27 +345,27 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.485625, y: -0.716875}
-      - {x: -0.485625, y: -0.716875}
-      - {x: -0.578125, y: -0.67062503}
-      - {x: -0.624375, y: -0.393125}
-      - {x: -0.716875, y: -0.30062503}
-      - {x: -0.716875, y: -0.161875}
-      - {x: -0.624375, y: -0.069375}
-      - {x: -0.716875, y: 0.023125}
-      - {x: -0.716875, y: 0.161875}
-      - {x: -0.624375, y: 0.254375}
-      - {x: -0.624375, y: 0.439375}
-      - {x: -0.624375, y: 0.531875}
-      - {x: -0.531875, y: 0.624375}
-      - {x: -0.023125, y: 0.624375}
-      - {x: 0.069375, y: 0.716875}
-      - {x: 0.208125, y: 0.716875}
-      - {x: 0.531875, y: 0.393125}
-      - {x: 0.716875, y: 0.30062503}
-      - {x: 0.763125, y: 0.254375}
-      - {x: 0.763125, y: -0.439375}
-      - {x: 0.531875, y: -0.67062503}
+    - - {x: 0.4108125, y: -0.6064375}
+      - {x: -0.4108125, y: -0.6064375}
+      - {x: -0.4890625, y: -0.56731254}
+      - {x: -0.5281875, y: -0.3325625}
+      - {x: -0.6064375, y: -0.25431252}
+      - {x: -0.6064375, y: -0.1369375}
+      - {x: -0.5281875, y: -0.0586875}
+      - {x: -0.6064375, y: 0.019562501}
+      - {x: -0.6064375, y: 0.1369375}
+      - {x: -0.5281875, y: 0.2151875}
+      - {x: -0.5281875, y: 0.3716875}
+      - {x: -0.5281875, y: 0.4499375}
+      - {x: -0.4499375, y: 0.5281875}
+      - {x: -0.019562501, y: 0.5281875}
+      - {x: 0.0586875, y: 0.6064375}
+      - {x: 0.1760625, y: 0.6064375}
+      - {x: 0.4499375, y: 0.3325625}
+      - {x: 0.6064375, y: 0.25431252}
+      - {x: 0.6455625, y: 0.2151875}
+      - {x: 0.6455625, y: -0.3716875}
+      - {x: 0.4499375, y: -0.56731254}
 --- !u!114 &8657484671396950861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,12 +380,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AlphaTolerance: 20
   DistanceThreshold: 1
-  Scale: 1.11
+  Scale: 0.939
   Decompose: 0
   RunInPlayMode: 0
   UseCache: 0
   lastAlphaTolerance: 20
-  lastScale: 1.11
+  lastScale: 0.939
   lastDistanceThreshold: 1
   lastDecompose: 0
   lastSprite: {fileID: 21300000, guid: fcf0d3066b7b54a4eb5ef3fbd82b1a0b, type: 3}
@@ -415,7 +415,7 @@ MonoBehaviour:
   deathEffect: {fileID: 8707307778291013391, guid: 14e9f6433ed4b58408b5dfdce3234725,
     type: 3}
   health: 0
-  maxHealth: 250
+  maxHealth: 200
   HealthBarTransform: {fileID: 1191384570048951074}
   HealthBarRenderers:
   - {fileID: 475739163098719354}
