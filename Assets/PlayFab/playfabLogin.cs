@@ -17,7 +17,8 @@ public class playfabLogin : MonoBehaviour
             */
             PlayFabSettings.staticSettings.TitleId = "8DA36";
         }
-        
+
+       PlayerPrefs.DeleteAll();
        DoLogin();
     }
 

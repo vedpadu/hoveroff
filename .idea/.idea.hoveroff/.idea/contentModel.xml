@@ -50,6 +50,7 @@
         <e p="lineRendererShadows.cs" t="Include" />
         <e p="lockRotationChildScript.cs" t="Include" />
         <e p="meshLayerSet.cs" t="Include" />
+        <e p="parallaxScriptX.cs" t="Include" />
         <e p="PlayFab" t="Include">
           <e p="playfabLogin.cs" t="Include" />
         </e>
