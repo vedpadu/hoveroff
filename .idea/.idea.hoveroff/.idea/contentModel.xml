@@ -245,6 +245,7 @@
             </e>
           </e>
         </e>
+        <e p="sceneLoaderButtonScript.cs" t="Include" />
         <e p="shadowManager.cs" t="Include" />
         <e p="shipScript.cs" t="Include" />
         <e p="shootingEnemyScript.cs" t="Include" />
