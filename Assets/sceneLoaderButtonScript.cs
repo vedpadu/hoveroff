@@ -13,11 +13,18 @@ public class sceneLoaderButtonScript : MonoBehaviour
     private bool mouseEntered;
 
     private float initScale;
+
+    public int scene;
+
+    public int sceneTransition;
+
+    private levelManagerScript levelLoader;
     // Start is called before the first frame update
     void Start()
     {
         currentScale = transform.localScale.x;
         initScale = currentScale;
+        levelLoader = GameObject.FindGameObjectWithTag("levelSelect").GetComponent<levelManagerScript>();
     }
 
     // Update is called once per frame
@@ -27,6 +34,10 @@ public class sceneLoaderButtonScript : MonoBehaviour
         if (mouseEntered)
         {
             currentScale = Mathf.Lerp(currentScale, scaleHovered, lerpValueButton);
+            if (Input.GetMouseButtonDown(0))
+            {
+                levelLoader.LoadNextLevel(scene, sceneTransition);
+            }
         }
         else
         {

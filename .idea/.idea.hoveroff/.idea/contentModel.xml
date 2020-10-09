@@ -47,6 +47,7 @@
         <e p="laserDroneManager.cs" t="Include" />
         <e p="laserDroneScript.cs" t="Include" />
         <e p="laserScript.cs" t="Include" />
+        <e p="levelManagerScript.cs" t="Include" />
         <e p="lineRendererShadows.cs" t="Include" />
         <e p="lockRotationChildScript.cs" t="Include" />
         <e p="meshLayerSet.cs" t="Include" />
