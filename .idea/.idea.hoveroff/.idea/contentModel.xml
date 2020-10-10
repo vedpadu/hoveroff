@@ -22,6 +22,7 @@
         <e p="cameraShake.cs" t="Include" />
         <e p="commonEnemyBehaviour.cs" t="Include" />
         <e p="dashingBossScript.cs" t="Include" />
+        <e p="exitSceneScript.cs" t="Include" />
         <e p="FastIK" t="Include">
           <e p="Documentation.txt" t="Include" />
           <e p="Scripts" t="Include">
@@ -47,7 +48,10 @@
         <e p="laserDroneManager.cs" t="Include" />
         <e p="laserDroneScript.cs" t="Include" />
         <e p="laserScript.cs" t="Include" />
+        <e p="levelLoaderButton.cs" t="Include" />
         <e p="levelManagerScript.cs" t="Include" />
+        <e p="levelSelectButtonScript.cs" t="Include" />
+        <e p="levelWheelScript.cs" t="Include" />
         <e p="lineRendererShadows.cs" t="Include" />
         <e p="lockRotationChildScript.cs" t="Include" />
         <e p="meshLayerSet.cs" t="Include" />

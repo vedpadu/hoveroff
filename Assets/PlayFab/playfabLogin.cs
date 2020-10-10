@@ -1,15 +1,19 @@
-﻿using PlayFab;
+﻿using System.Collections.Generic;
+using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
-
 public class playfabLogin : MonoBehaviour
 {
     private string userEmail;
     private string userPassword;
     private string username;
     public GameObject loginPanel;
+    bool hasStatisticsInitialized;
+    public List<string> statsToCheck;
+    private levelManagerScript lMS;
     public void Start()
     {
+        lMS = GameObject.FindGameObjectWithTag("levelSelect").GetComponent<levelManagerScript>();
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId)){
             /*
             Please change the titleId below to your own titleId from PlayFab Game Manager.
@@ -17,8 +21,7 @@ public class playfabLogin : MonoBehaviour
             */
             PlayFabSettings.staticSettings.TitleId = "8DA36";
         }
-
-       PlayerPrefs.DeleteAll();
+        
        DoLogin();
     }
 
@@ -31,14 +34,28 @@ public class playfabLogin : MonoBehaviour
             var request = new LoginWithEmailAddressRequest {Email = userEmail, Password = userPassword};
             PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
         }
+        else
+        {
+            loginPanel.SetActive(true);
+        }
     }
 
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Congratulations, you made your first successful API call!");
+        initStats();
+        if (loginPanel.activeSelf)
+        {
+            lMS.LoadNextLevel(1,0);
+        }
+        else
+        {
+            lMS.LoadNextLevel(1,1);
+        }
+      
         PlayerPrefs.SetString("EMAIL", userEmail);
         PlayerPrefs.SetString("PASSWORD", userPassword);
-        loginPanel.SetActive(false);
+        //loginPanel.SetActive(false);
     }
 
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
@@ -79,5 +96,57 @@ public class playfabLogin : MonoBehaviour
     {
         var request = new LoginWithEmailAddressRequest {Email = userEmail, Password = userPassword};
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
+    }
+
+    private void initStats()
+    {
+        GetStatisticsForCheckInit();
+
+    }
+    
+    void GetStatisticsForCheckInit()
+    {
+        PlayFabClientAPI.GetPlayerStatistics(
+            new GetPlayerStatisticsRequest(),
+            CheckStatsInit,
+            error => Debug.LogError(error.GenerateErrorReport())
+        );
+    }
+
+    void CheckStatsInit(GetPlayerStatisticsResult result)
+    {
+        List<string> stats = new List<string>();
+        for (var i = 0; i < statsToCheck.Count; i++)
+        {
+            stats.Add(statsToCheck[i]);
+        }
+
+        foreach (var eachStat in result.Statistics)
+        {
+            if (stats.Contains(eachStat.StatisticName))
+            {
+                stats.Remove(eachStat.StatisticName);
+            }
+        }
+        if (stats.Count == 0)
+        {
+            hasStatisticsInitialized = true;
+        }
+        else
+        {
+            hasStatisticsInitialized = false;
+        }
+        if (!hasStatisticsInitialized)
+        {
+            PlayFabClientAPI.UpdatePlayerStatistics( new UpdatePlayerStatisticsRequest {
+                    // request.Statistics is a list, so multiple StatisticUpdate objects can be defined if required.
+                    Statistics = new List<StatisticUpdate> {
+                        new StatisticUpdate { StatisticName = "level", Value = 0 },
+                    }
+                },
+                result1 => { Debug.Log("User statistics updated"); },
+                error => { Debug.LogError(error.GenerateErrorReport()); });
+        }
+        
     }
 }
