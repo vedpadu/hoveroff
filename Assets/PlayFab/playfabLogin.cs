@@ -55,6 +55,7 @@ public class playfabLogin : MonoBehaviour
       
         PlayerPrefs.SetString("EMAIL", userEmail);
         PlayerPrefs.SetString("PASSWORD", userPassword);
+        PlayerPrefs.SetString("PlayFabId", result.PlayFabId);
         //loginPanel.SetActive(false);
     }
 
@@ -63,7 +64,18 @@ public class playfabLogin : MonoBehaviour
         Debug.Log("Register Success");
         PlayerPrefs.SetString("EMAIL", userEmail);
         PlayerPrefs.SetString("PASSWORD", userPassword);
+        PlayFabClientAPI.UpdateUserTitleDisplayName(new UpdateUserTitleDisplayNameRequest {DisplayName = username}, OnDisplayNameSuccess, OnDisplayNameFailure);
         DoLogin();
+    }
+
+    void OnDisplayNameSuccess(UpdateUserTitleDisplayNameResult result)
+    {
+        print("Display name: " + result);
+    }
+
+    void OnDisplayNameFailure(PlayFabError error)
+    {
+        Debug.LogError(error.GenerateErrorReport());
     }
 
     private void OnRegisterFailure(PlayFabError error)

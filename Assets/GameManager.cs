@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using PlayFab;
+using PlayFab.ClientModels;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +32,10 @@ public class GameManager : MonoBehaviour
     public string statisticName;
 
     public victoryScreenScript victoryScreen;
+
+    public int levelNumber;
+
+    private int currentLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +68,11 @@ public class GameManager : MonoBehaviour
             victoryScreen.gameObject.SetActive(true);
             victoryScreen.currentTime = timer;
             victoryScreen.statName = statisticName;
+            if (currentLevel == levelNumber)
+            {
+                currentLevel += 1;
+                UpdatePlayerLevel();
+            }
         }
 
         if (Input.anyKeyDown && !hasStarted)
@@ -92,6 +103,38 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("startGameImmediate", 1);
             lMS.LoadNextLevel(SceneManager.GetActiveScene().buildIndex, 0);
             
+        }
+    }
+
+    void UpdatePlayerLevel()
+    {
+        PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest {
+                // request.Statistics is a list, so multiple StatisticUpdate objects can be defined if required.
+                Statistics = new List<StatisticUpdate> {
+                    new StatisticUpdate { StatisticName = "level", Value = currentLevel },
+                }
+            },
+            result1 => { Debug.Log("User statistics updated"); },
+            error => { Debug.LogError(error.GenerateErrorReport()); });
+    }
+
+    void GetStatsLevel()
+    {
+        PlayFabClientAPI.GetPlayerStatistics(
+            new GetPlayerStatisticsRequest(),
+            OnGetStatsLevel,
+            error => Debug.LogError(error.GenerateErrorReport())
+        );
+    }
+
+    void OnGetStatsLevel(GetPlayerStatisticsResult result)
+    {
+        foreach (var eachStat in result.Statistics)
+        {
+            if (eachStat.StatisticName.Equals("level"))
+            {
+                currentLevel = eachStat.Value;
+            }
         }
     }
     

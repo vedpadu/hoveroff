@@ -25,12 +25,30 @@ public class victoryScreenScript : MonoBehaviour
     [HideInInspector] public string statName;
 
     public float conversionFactor = 1000000f;
+
+    private float highScore;
+
+    private string displayName;
     // Start is called before the first frame update
     void Start()
     {
+       
         StartCoroutine(Grow(growDur));
         textTimeCurrent.text = "Time:" + FormatTime(currentTime);
+        //starts chain of getting times
+        PlayFabClientAPI.GetPlayerProfile(new GetPlayerProfileRequest{PlayFabId = PlayerPrefs.GetString("PlayFabId")}, OnGetDisplayName, OnGetDisplayNameFail);
+       
+    }
+
+    void OnGetDisplayName(GetPlayerProfileResult result)
+    {
+        displayName = result.PlayerProfile.DisplayName;
         GetStatisticBestTime();
+    }
+
+    void OnGetDisplayNameFail(PlayFabError error)
+    {
+        Debug.LogError(error.GenerateErrorReport());
     }
 
     void GetStatisticBestTime()
@@ -46,7 +64,7 @@ public class victoryScreenScript : MonoBehaviour
     {
 
         bool contains = false;
-        float highScore = currentTime;
+        highScore = currentTime;
         foreach (var eachStat in result.Statistics)
         {
             if (eachStat.StatisticName.Equals(statName))
@@ -64,7 +82,7 @@ public class victoryScreenScript : MonoBehaviour
                         new StatisticUpdate { StatisticName = statName, Value = (int)(currentTime * conversionFactor * -1) },
                     }
                 },
-                result1 => { Debug.Log("User statistics updated init highscore"); },
+                OnUpdateStats,
                 error => { Debug.LogError(error.GenerateErrorReport()); });
         }
         else
@@ -78,13 +96,56 @@ public class victoryScreenScript : MonoBehaviour
                             new StatisticUpdate { StatisticName = statName, Value = (int)(currentTime * conversionFactor * -1) },
                         }
                     },
-                    result1 => { Debug.Log("User statistics updated new highscore"); },
+                    OnUpdateStats,
                     error => { Debug.LogError(error.GenerateErrorReport()); });
+            }
+            else
+            {
+                GetLeaderBoard();
             }
         }
 
         textTimeHighScore.text = "Best:" + FormatTime(highScore);
+    }
 
+    void OnUpdateStats(UpdatePlayerStatisticsResult result)
+    {
+        print("stats Updated");
+        GetLeaderBoard();
+    }
+
+    void GetLeaderBoard()
+    {
+        var requestLeaderboard = new GetLeaderboardRequest
+            {StartPosition = 0, StatisticName = statName, MaxResultsCount = namesText.Count};
+        PlayFabClientAPI.GetLeaderboard(requestLeaderboard, OnGetLeaderBoard, OnErrorLeaderBoard);
+    }
+
+    void OnGetLeaderBoard(GetLeaderboardResult result)
+    {
+        for (var i = 0; i < result.Leaderboard.Count; i++)
+        {
+            if (result.Leaderboard[i].DisplayName.Equals(displayName))
+            {
+                namesText[i].text = displayName;
+                timesText[i].text = FormatTime(highScore);
+            }
+            else
+            {
+                namesText[i].text = result.Leaderboard[i].DisplayName;
+                timesText[i].text = FormatTime(((float)result.Leaderboard[i].StatValue/conversionFactor) * -1);
+            }
+           
+        }
+    }
+
+    void OnErrorLeaderBoard(PlayFabError error)
+    {
+        for (var i = 0; i < namesText.Count; i++)
+        {
+            namesText[i].text = "Error";
+            timesText[i].text = "Error";
+        }
     }
 
     // Update is called once per frame
