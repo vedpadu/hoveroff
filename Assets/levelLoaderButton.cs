@@ -41,6 +41,7 @@ public class levelLoaderButton : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     levelLoader.LoadNextLevel(scene, sceneTransition);
+                    PlayerPrefs.SetInt("startGameImmediate", 0);
                 }
             }
             else

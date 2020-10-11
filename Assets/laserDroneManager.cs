@@ -201,6 +201,11 @@ public class laserDroneManager : MonoBehaviour
            
         }
 
+        if (deadCount == laserDrones.Count)
+        {
+            Destroy(gameObject);
+        }
+
         if (laserDrones.Count - deadCount <= startStage2Count && !stage2)
         {
             stage2 = true;

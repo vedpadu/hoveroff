@@ -21,8 +21,8 @@ public class playfabLogin : MonoBehaviour
             */
             PlayFabSettings.staticSettings.TitleId = "8DA36";
         }
-        
-       DoLogin();
+        PlayerPrefs.DeleteAll();
+        DoLogin();
     }
 
     void DoLogin()
@@ -136,6 +136,15 @@ public class playfabLogin : MonoBehaviour
         {
             hasStatisticsInitialized = false;
         }
+        
+       /* PlayFabClientAPI.UpdatePlayerStatistics( new UpdatePlayerStatisticsRequest {
+                // request.Statistics is a list, so multiple StatisticUpdate objects can be defined if required.
+                Statistics = new List<StatisticUpdate> {
+                    new StatisticUpdate { StatisticName = "laserDroneTime", Value = -1000000000 },
+                }
+            },
+            result1 => { Debug.Log("User statistics updated"); },
+            error => { Debug.LogError(error.GenerateErrorReport()); });*/
         if (!hasStatisticsInitialized)
         {
             PlayFabClientAPI.UpdatePlayerStatistics( new UpdatePlayerStatisticsRequest {
