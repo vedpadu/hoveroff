@@ -181,6 +181,7 @@ public class laserDroneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         bool hasAllReached = true;
         int deadCount = 0;
         for (var i = 0; i < laserDrones.Count; i++)

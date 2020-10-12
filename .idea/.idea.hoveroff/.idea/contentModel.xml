@@ -57,6 +57,7 @@
         <e p="lockRotationChildScript.cs" t="Include" />
         <e p="meshLayerSet.cs" t="Include" />
         <e p="parallaxScriptX.cs" t="Include" />
+        <e p="pauseMenuScript.cs" t="Include" />
         <e p="PlayFab" t="Include">
           <e p="playfabLogin.cs" t="Include" />
         </e>
@@ -251,6 +252,8 @@
             </e>
           </e>
         </e>
+        <e p="resumeButtonScript.cs" t="Include" />
+        <e p="sceneLoaderButtonMouseRaycast.cs" t="Include" />
         <e p="sceneLoaderButtonScript.cs" t="Include" />
         <e p="shadowManager.cs" t="Include" />
         <e p="shipScript.cs" t="Include" />

@@ -15,7 +15,7 @@ public class cameraShake : MonoBehaviour
             Shake greatestShake = shakes[0];
             for (var i = 0; i < shakes.Count; i++)
             {
-                shakes[i].elapsed += Time.deltaTime;
+                shakes[i].elapsed += Time.unscaledDeltaTime;
                 if (shakes[i].magnitude > greatestShake.magnitude)
                 {
                     greatestShake = shakes[i];

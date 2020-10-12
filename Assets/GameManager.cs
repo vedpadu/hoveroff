@@ -36,9 +36,14 @@ public class GameManager : MonoBehaviour
     public int levelNumber;
 
     private int currentLevel;
+
+    public GameObject pauseMenu;
+
+    private pauseMenuScript pauseMenScript;
     // Start is called before the first frame update
     void Start()
     {
+        pauseMenScript = pauseMenu.GetComponent<pauseMenuScript>();
         lMS = GameObject.FindGameObjectWithTag("levelSelect").GetComponent<levelManagerScript>();
         enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -61,8 +66,30 @@ public class GameManager : MonoBehaviour
             init = true;
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Destroy(gameObjectToVictoryWhenDead);
+            timer = 50f;
+        }
+
+        if (!victory)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (!pauseMenu.activeSelf)
+                {
+                    Time.timeScale = 0f;
+                    pauseMenu.transform.localScale = new Vector3(0f,0f,1f);
+                    pauseMenu.SetActive(true);
+                    pauseMenScript.StartGrow();
+                }
+            }
+        }
+        
         if (gameObjectToVictoryWhenDead.Equals(null))
         {
+            pauseMenu.SetActive(false);
+            timerText.gameObject.SetActive(false);
             victory = true;
             timerText.gameObject.SetActive(false);
             victoryScreen.gameObject.SetActive(true);
