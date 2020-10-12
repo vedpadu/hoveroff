@@ -111,6 +111,12 @@ public class victoryScreenScript : MonoBehaviour
     void OnUpdateStats(UpdatePlayerStatisticsResult result)
     {
         print("stats Updated");
+        StartCoroutine(GetLBCoroutine(0.7f));
+    }
+
+    IEnumerator GetLBCoroutine(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
         GetLeaderBoard();
     }
 

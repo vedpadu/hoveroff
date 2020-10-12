@@ -14,14 +14,17 @@ public class pauseMenuScript : MonoBehaviour
 
     private cameraShake camerShake;
 
+
     void Start()
     {
-        camerShake = Camera.main.GetComponent<cameraShake>();
+        
+       
     }
     // Start is called before the first frame update
     public void StartGrow()
     {
         camerShake = Camera.main.GetComponent<cameraShake>();
+        
         camerShake.shakes.Clear();   
         StartCoroutine(Grow(growDuration));
         paused = true;

@@ -54,7 +54,12 @@ public class levelManagerScript : MonoBehaviour
                 _audioManager.Stop(_audioManager.sounds[i].name);
             }
         }*/
-        yield return new WaitForSeconds(transitionTime);
+       float elapsed = 0.0f;
+       while (elapsed < transitionTime)
+       {
+           elapsed += Time.unscaledDeltaTime;
+           yield return null;
+       }
         Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);
     }
