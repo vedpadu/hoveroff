@@ -326,7 +326,7 @@ public class handBossScript : MonoBehaviour
         {
             if (Vector2.Distance(sprite.position, target.position) > secondStageStopMovingTowardDist && !isAttacking)
             {
-                Vector2 dir = ((Vector2)target.position - (Vector2)spriteHolder.position).normalized;
+                Vector2 dir = (Vector2.zero - (Vector2)spriteHolder.position).normalized;
                 spriteHolderRB.AddForce(dir * (secondStageMoveForce * Time.deltaTime));   
             }
            

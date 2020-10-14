@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         lMS = GameObject.FindGameObjectWithTag("levelSelect").GetComponent<levelManagerScript>();
         enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
         player = GameObject.FindGameObjectWithTag("Player");
+        GetStatsLevel();
         if (PlayerPrefs.GetInt("startGameImmediate") == 1)
         {
             promptUI.SetActive(false);

@@ -900,7 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleHovered: 0.95
   lerpValueButton: 0.3
-  scene: 0
+  scene: 6
   sceneTransition: 0
   enabled: 1
 --- !u!61 &1110353117
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleHovered: 0.95
   lerpValueButton: 0.3
-  scene: 0
+  scene: 5
   sceneTransition: 0
   enabled: 1
 --- !u!1 &1669383660

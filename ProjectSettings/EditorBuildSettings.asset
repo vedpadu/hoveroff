@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/laserDroneFight.unity
     guid: b0b0a25b40221cb499f17a0bc1a950dd
+  - enabled: 1
+    path: Assets/Scenes/hiveFight.unity
+    guid: e8e3a890531d2e848a580a1669372f09
+  - enabled: 1
+    path: Assets/Scenes/etherealEyeFight.unity
+    guid: 3e4a7c885b6c0614aa1e9dca960da074
   m_configObjects: {}

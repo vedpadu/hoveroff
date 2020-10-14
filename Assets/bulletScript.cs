@@ -22,10 +22,13 @@ public class bulletScript : MonoBehaviour
     [HideInInspector]public healthScript shooter;
 
     private bool hit;
+
+    private cameraShake camShake;
     // Start is called before the first frame update
     void Start()
     {
-        shaker = GameObject.FindGameObjectWithTag("Player").GetComponent<shipScript>();
+        camShake = Camera.main.GetComponent<cameraShake>();
+        // shaker = GameObject.FindGameObjectWithTag("Player").GetComponent<shipScript>();
     }
 
     // Update is called once per frame
@@ -47,7 +50,7 @@ public class bulletScript : MonoBehaviour
             {
                 other.GetComponent<healthScript>().DecreaseHealth(damage);
                 Destroy(GameObject.Instantiate(deathParts, transform.position, transform.rotation), 2f);
-                shaker.ShakeCam2(shakeDur, shakeMag);
+                camShake.shakes.Add(new Shake(shakeDur, shakeMag));
                 Destroy(gameObject);
                 hit = true;
             }

@@ -97,10 +97,19 @@ public class leaderBoardMenuScript : MonoBehaviour
 
     void OnGetLeaderBoard(GetLeaderboardResult result)
     {
-        for (var i = 0; i < result.Leaderboard.Count; i++)
+        for (var i = 0; i < namesText.Count; i++)
         {
-            namesText[i].text = result.Leaderboard[i].DisplayName;
-            timesText[i].text = FormatTime(((float)result.Leaderboard[i].StatValue/conversionFactor) * -1);
+            if (result.Leaderboard.Count > i)
+            {
+                namesText[i].text = result.Leaderboard[i].DisplayName;
+                timesText[i].text = FormatTime(((float)result.Leaderboard[i].StatValue/conversionFactor) * -1);
+            }
+            else
+            {
+                namesText[i].text = "----------------";
+                timesText[i].text = "----------------";
+            }
+            
 
         }
     }

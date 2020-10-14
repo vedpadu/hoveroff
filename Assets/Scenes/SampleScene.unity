@@ -1287,6 +1287,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a09225e6a8570449f76e126f1ecacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptUI: {fileID: 0}
+  timerText: {fileID: 0}
+  gameObjectToVictoryWhenDead: {fileID: 0}
+  statisticName: 
+  victoryScreen: {fileID: 0}
+  levelNumber: 0
+  pauseMenu: {fileID: 0}
 --- !u!4 &1934995529
 Transform:
   m_ObjectHideFlags: 0

@@ -8166,8 +8166,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   options:
   - Elite Rainbow Corps
+  - The Hive
+  - Ethereal Eye
   optionKeys:
   - laserDroneTime
+  - hiveTime
+  - etherealEyeTime
   dropdown: {fileID: 1916941740}
   hoveredScale: 1.4
   lerpVal: 0.3

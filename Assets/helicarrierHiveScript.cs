@@ -381,7 +381,6 @@ public class helicarrierHiveScript : MonoBehaviour
 
     public void OnDestroy()
     {
-        Destroy(GameObject.Instantiate(shockwave, transform.position, transform.rotation),1.5f);
         camerShake.shakes.Remove(laserShake);
     }
 }
