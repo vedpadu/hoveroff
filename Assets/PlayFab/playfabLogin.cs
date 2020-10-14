@@ -13,6 +13,13 @@ public class playfabLogin : MonoBehaviour
     private levelManagerScript lMS;
     public void Start()
     {
+        if (!PlayerPrefs.HasKey("MusicVol"))
+        {
+            PlayerPrefs.SetFloat("MusicVol", 1f);
+            PlayerPrefs.SetInt("ResInt", 0);
+            PlayerPrefs.SetInt("isFullscreen",1);
+            PlayerPrefs.SetFloat("SFXVol", 1f);
+        }
         lMS = GameObject.FindGameObjectWithTag("levelSelect").GetComponent<levelManagerScript>();
         if (string.IsNullOrEmpty(PlayFabSettings.staticSettings.TitleId)){
             /*

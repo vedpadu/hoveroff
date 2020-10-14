@@ -56,6 +56,9 @@
         <e p="lineRendererShadows.cs" t="Include" />
         <e p="lockRotationChildScript.cs" t="Include" />
         <e p="meshLayerSet.cs" t="Include" />
+        <e p="optionsButtonScript.cs" t="Include" />
+        <e p="OptionsMenu.cs" t="Include" />
+        <e p="optionsOpenScript.cs" t="Include" />
         <e p="parallaxScriptX.cs" t="Include" />
         <e p="pauseMenuScript.cs" t="Include" />
         <e p="PlayFab" t="Include">
