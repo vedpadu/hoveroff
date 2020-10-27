@@ -1257,6 +1257,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4650755597234021422, guid: 338e2c049fdb56947a1994fe829ac2b7,
         type: 3}
+    - target: {fileID: 544101580505398202, guid: 602c23e0a1475e4418a303c2a14dbf13,
+        type: 3}
+      propertyPath: instantiateOnDeathBool
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 544101580693771646, guid: 602c23e0a1475e4418a303c2a14dbf13,
         type: 3}
       propertyPath: deathEffect

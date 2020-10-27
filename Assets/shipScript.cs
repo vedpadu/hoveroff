@@ -25,6 +25,7 @@ public class shipScript : MonoBehaviour
     public Transform camerHolder;
 
     private Shake cameraShakeLaser;
+    public float strafeForce;
 
     private healthScript hS;
     // Start is called before the first frame update
@@ -45,7 +46,30 @@ public class shipScript : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddRelativeForce(new Vector2(moveForce * Time.deltaTime, 0f));
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddRelativeForce(new Vector2(0f, (strafeForce/2) * Time.deltaTime));
+            }
+        
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddRelativeForce(new Vector2(0f, (-strafeForce/2) * Time.deltaTime));
+            }
         }
+        else
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddRelativeForce(new Vector2(0f, strafeForce * Time.deltaTime));
+            }
+        
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddRelativeForce(new Vector2(0f, -strafeForce * Time.deltaTime));
+            }
+        }
+
+        
 
         if (Input.GetMouseButtonDown(0))
         {

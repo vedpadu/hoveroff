@@ -33,6 +33,7 @@ public class healthScript : MonoBehaviour
 
     public bool actuallyKill = true;
 
+    public bool instantiateOnDeathBool = false;
     public GameObject instantiateOnDeath;
     // Start is called before the first frame update
     void Start()
@@ -50,10 +51,15 @@ public class healthScript : MonoBehaviour
             {
                 if (actuallyKill)
                 {
-                    if (!instantiateOnDeath.Equals(null))
+                    if (instantiateOnDeathBool)
                     {
-                        Destroy(GameObject.Instantiate(instantiateOnDeath, transform.position, transform.rotation),1.5f);
+                        if (!instantiateOnDeath.Equals(null))
+                        {
+                            Destroy(GameObject.Instantiate(instantiateOnDeath, transform.position, transform.rotation),1.5f);
+                        }
                     }
+
+                    
                     Destroy(GameObject.Instantiate(deathEffect, transform.position, transform.rotation), 3f);
                     if (shakeFadeAfterDeath)
                     {

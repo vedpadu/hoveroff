@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 2797374121527290459}
   - component: {fileID: 2797374121527290448}
   m_Layer: 9
-  m_Name: spaceTemp
+  m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +292,7 @@ MonoBehaviour:
   laserShakeMagnitude: 0.05
   laserRecoilForce: 700
   camerHolder: {fileID: 0}
+  strafeForce: 900
 --- !u!50 &2797374121527290452
 Rigidbody2D:
   serializedVersion: 4
@@ -466,6 +467,9 @@ MonoBehaviour:
   destroyThisObject: 1
   gameObjectToDestroy: {fileID: 0}
   shakeFadeAfterDeath: 0
+  actuallyKill: 1
+  instantiateOnDeathBool: 0
+  instantiateOnDeath: {fileID: 0}
 --- !u!1001 &2797374121265154523
 PrefabInstance:
   m_ObjectHideFlags: 0
